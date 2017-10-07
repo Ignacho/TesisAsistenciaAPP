@@ -15,9 +15,9 @@
 				  <th style="vertical-align:middle">{{listado.nombre}}</th>
 				  <th style="vertical-align:middle">{{listado.apellido}}</th>
 						<input type="hidden" id="{{listado.id_alumno}}"/>
-				  <th style="vertical-align:middle; width: 10%">
-					<select style="width:75%" class="form-control" ng-init="listado.view=listado.cod_asist" ng-model="listado.view" ng-options="falta.id as falta.name for falta in faltas" ng-if="listado.libre == null">
-						<option disabled value="">Sel</option>
+				  <th style="width:5%">
+					<select class="form-control" ng-init="listado.view=listado.cod_asist" ng-model="listado.view" ng-options="falta.id as falta.name for falta in faltas" ng-if="listado.libre == null">
+						<option disabled value=""> --Sel--</option>
 					</select>
 					<span ng-if="listado.libre == 'T'" style="color:red;">LIBRE</span>
 				  </th>
