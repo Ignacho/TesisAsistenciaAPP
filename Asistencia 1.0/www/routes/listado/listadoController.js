@@ -16,8 +16,11 @@ angular.module('app').controller('listadoController', ['$scope','$http','$routeP
 		var longitud = alumnos.length;
 		$scope.arr = [];
 		angular.forEach(alumnos, function(value, key) {
-			if(value.view != null)
-			$scope.arr.push('{"falta":"'+ value.view + '","id_alumno":"' + value.id_alumno+'"}');
+			if(value.view != null){
+				$scope.arr.push('{"falta":"'+ value.view + '","id_alumno":"' + value.id_alumno+'"}');
+			}else if(value.libre == 'T') {
+				longitud--;
+			}
 		});
 		
 		//Validacion que se seleccionen para todos los alumnos su falta.
@@ -30,16 +33,20 @@ angular.module('app').controller('listadoController', ['$scope','$http','$routeP
 		result = JSON.parse(result);	
 
 		var successBackend = function(data, status, headers, config){
-			$scope.getListadoA();
-			$scope.listado = '';
-			alumnos = null;
-			alert('Asistencia Guardada Exitosamente');
-			$scope.goBack();
+			if (data == 500){
+				alert('No se puede guardar la asistencia debido a que todos los alumnos est\u00e1n libres.');
+			}else{
+				$scope.getListadoA();
+				$scope.listado = '';
+				alumnos = null;
+				alert('Asistencia Guardada Exitosamente');
+				$scope.goBack();
+			}	
 		};
 		var errorBackend = function(data, status, headers, config){
 		};
 	
-		d_cur = $routeParams.result;      
+		id_cur = $routeParams.result;      
 		id_doc= $routeParams.id_doc;
 		estado_curso = $rootScope.estado_curso;
 		$http({ method: 'POST',
@@ -47,31 +54,38 @@ angular.module('app').controller('listadoController', ['$scope','$http','$routeP
 		data: {'id_curso':id_cur,'id_docente':id_doc,'estado_curso':estado_curso,'data':result,'action':'G'}})
 		.success(successBackend) 
 		.error(errorBackend); 
-
 	}
 	
 	$scope.goConfirm = function(){
 		alumnos = $scope.$parent.$$childHead.listado;
-		$scope.arr = [];
 		var longitud = alumnos.length;
+		$scope.arr = [];
 		angular.forEach(alumnos, function(value, key) {
-			if(value.view != null)
-			$scope.arr.push('{"falta":"'+ value.view + '","id_alumno":"' + value.id_alumno+'"}');
+			if(value.view != null){
+				$scope.arr.push('{"falta":"'+ value.view + '","id_alumno":"' + value.id_alumno+'"}');
+			}else if(value.libre == 'T') {
+				longitud--;
+			}
 		});	
 		//Validacion que se seleccionen para todos los alumnos su falta.
 		if (longitud != $scope.arr.length){
 			alert('Por favor seleccione la falta para todos los alumnos');
 			return false;
 		}
+		
 		result = angular.toJson($scope.arr);
 		result = JSON.parse(result);	
 
 		var successBackend = function(data, status, headers, config){
-			$scope.getListadoA();
-			$scope.listado = '';
-			alumnos = null;
-			alert('Asistencia Confirmada Exitosamente');
-			$scope.goBack();
+			if (data == 500){
+				alert('No se puede confirmar la asistencia debido a que todos los alumnos est\u00e1n libres.');
+			}else{
+				$scope.getListadoA();
+				$scope.listado = '';
+				alumnos = null;
+				alert('Asistencia Confirmada Exitosamente');
+				$scope.goBack();
+			}	
 		};
 		var errorBackend = function(data, status, headers, config){
 		};
@@ -84,7 +98,6 @@ angular.module('app').controller('listadoController', ['$scope','$http','$routeP
 		data: {'id_curso':id_cur,'id_docente':id_doc,'estado_curso':estado_curso,'data':result,'action':'C'}})
 		.success(successBackend) 
 		.error(errorBackend); 
-
 	}
 	
 	$scope.getListadoA = function(){
