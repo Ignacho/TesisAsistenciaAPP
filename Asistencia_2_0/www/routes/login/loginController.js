@@ -36,7 +36,7 @@ app.factory('factorylogin', function(){
 			error.style.display = "block";
 		};
 			$http({ method: 'POST',
-			url: 'http://localhost/workspace/APP/public/api/login',
+			url: 'https://asistencia2017.herokuapp.com/api/login',
 			data: {'email':obj.email, 'password':obj.password}})
 			.success(successBackend)
 			.error(errorBackend);
