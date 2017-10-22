@@ -32,6 +32,9 @@ angular.module('app').controller('listadoController', ['$scope','$http','$routeP
 				'Game Over',            // title
 				'Done'                  // buttonName
 			);
+			function alertDismissed() {
+			    alert("pepe");
+			}
 			return false;
 		}	
 
