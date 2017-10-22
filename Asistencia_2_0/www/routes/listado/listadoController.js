@@ -25,17 +25,16 @@ angular.module('app').controller('listadoController', ['$scope','$http','$routeP
 		
 		//Validacion que se seleccionen para todos los alumnos su falta.
 		if (longitud != $scope.arr.length){
-			//alert('Por favor seleccione la falta para todos los alumnos');
-			$cordovaDialogs.alert('Por favor seleccione la falta para todos los alumnos', 'title', 'button')
-			/*navigator.notification.alert(
+			//alert('Por favor seleccione la falta para todos los alumnos');			
+			navigator.notification.alert(
 				'Por favor seleccione la falta para todos los alumnos',  // message
 				alertDismissed,         // callback
 				'Game Over',            // title
 				'Done'                  // buttonName
 			);
 			function alertDismissed() {
-			    alert("pepe");
-			}*/
+			    // do something
+			}
 			return false;
 		}	
 
