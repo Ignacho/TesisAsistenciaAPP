@@ -28,13 +28,11 @@ angular.module('app').controller('listadoController', ['$scope','$http','$routeP
 			//alert('Por favor seleccione la falta para todos los alumnos');			
 			navigator.notification.alert(
 				'Por favor seleccione la falta para todos los alumnos',  // message
-				alertDismissed,         // callback
+				null,         // callback
 				'Game Over',            // title
 				'Done'                  // buttonName
 			);
-			function alertDismissed() {
-			    // do something
-			}
+			
 			return false;
 		}	
 
