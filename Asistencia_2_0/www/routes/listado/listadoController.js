@@ -25,7 +25,18 @@ angular.module('app').controller('listadoController', ['$scope','$http','$routeP
 		
 		//Validacion que se seleccionen para todos los alumnos su falta.
 		if (longitud != $scope.arr.length){
+<<<<<<< HEAD
 			alert('Por favor seleccione la falta para todos los alumnos');
+=======
+			//alert('Por favor seleccione la falta para todos los alumnos');			
+			navigator.notification.alert(
+				'Por favor seleccione la falta para todos los alumnos',  // message
+				null,         // callback
+				'Game Over',            // title
+				'Done'                  // buttonName
+			);
+			
+>>>>>>> e9fca62f4a3e05d11c099de4afb8c8140a05d9e8
 			return false;
 		}	
 
