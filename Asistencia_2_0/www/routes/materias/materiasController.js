@@ -80,7 +80,7 @@ angular.module('app').controller('materiasController', ['$scope','$http','$route
 			};
 			id_doc = $routeParams.id_docente;
 			$http({ method: 'POST',
-			url: 'http://localhost/workspace/APP/public/api/materia',
+			url: 'https://asistencia2017.herokuapp.com/api/materia',
 			data: {'id_docente':id_doc}})
 			.success(successBackend)
 			.error(errorBackend);

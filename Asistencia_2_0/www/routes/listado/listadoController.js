@@ -25,13 +25,7 @@ angular.module('app').controller('listadoController', ['$scope','$http','$routeP
 		
 		//Validacion que se seleccionen para todos los alumnos su falta.
 		if (longitud != $scope.arr.length){
-			//alert('Por favor seleccione la falta para todos los alumnos');
-			navigator.notification.alert(
-				'Por favor seleccione la falta para todos los alumnos',  // message
-				alertDismissed,         // callback
-				'Game Over',            // title
-				'Done'                  // buttonName
-			);
+			alert('Por favor seleccione la falta para todos los alumnos');
 			return false;
 		}	
 
@@ -40,13 +34,7 @@ angular.module('app').controller('listadoController', ['$scope','$http','$routeP
 
 		var successBackend = function(data, status, headers, config){
 			if (data == 500){
-				//alert('No se puede guardar la asistencia debido a que todos los alumnos est\u00e1n libres.');
-				navigator.notification.alert(
-					'No se puede guardar la asistencia debido a que todos los alumnos est\u00e1n libres.',  // message
-					alertDismissed,         // callback
-					'Game Over',            // title
-					'Done'                  // buttonName
-				);
+				alert('No se puede guardar la asistencia debido a que todos los alumnos est\u00e1n libres.');
 			}else{
 				$scope.getListadoA();
 				$scope.listado = '';
