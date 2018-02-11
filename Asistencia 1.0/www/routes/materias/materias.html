@@ -23,7 +23,7 @@
 				<tr id="{{ materias.nombreMateria }}" ng-repeat="materia in materias | orderBy:'nombreMateria'" style="font-size: 15px">
 				  <th ng-class="{ red: materia.Estado == 'G'}" style="line-height:30px">{{materia.Materia}}</th>
 				  <th ng-class="{ red: materia.Estado == 'G'}" style="line-height:30px">{{materia.Alternativa}}</th>
-				  <th ng-class="{ red: materia.Estado == 'G'}"> <input ng-model="$parent.materiasel" ng-checked="{{materia.Estado == 'G'}}" value="{{materia}}" type="radio" name="cursos" style="width:50px;height:50px"/></th>
+				  <th ng-class="{ red: materia.Estado == 'G'}"> <input ng-model="$parent.materiasel" ng-checked="{{materia.Estado == 'G'}}" value="{{materia}}" type="radio" name="cursos" style="width:30px;height:30px"/></th>
 				</tr>
 			  </tbody>
 			</table>
