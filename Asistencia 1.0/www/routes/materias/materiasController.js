@@ -45,8 +45,8 @@ angular.module('app').controller('materiasController', ['$scope','$http','$route
 	}
 	
 	$scope.thirdscreen = function()
-	{debugger;
-		angular.element('#cursos').triggerHandler('click');
+	{		
+		$('input[name=cursos]').trigger('click').trigger('click');
 		result = $scope.materiasel;
 		if (angular.isUndefined(result))
 		{
