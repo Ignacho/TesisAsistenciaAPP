@@ -46,14 +46,23 @@ angular.module('app').controller('materiasController', ['$scope','$http','$route
 	
 	$scope.thirdscreen = function()
 	{		
-		$('input[name=cursos]').trigger('click').trigger('click');
 		result = $scope.materiasel;
-		if (angular.isUndefined(result))
-		{
-			alert('Seleccione una materia');
+		if (angular.isUndefined(result)){
+			materias = $scope.materias;
+			$scope.arr = [];
+			angular.forEach(materias, function(value, key) {
+				if(value.Estado == 'G'){
+					$scope.arr.push('{"Materia":"'+ value.Materia + '","Alternativa":"' + value.Alternativa + '","IdC":"' + value.IdC + '","Estado":"' + value.Estado+'"}');
+				}
+			});
+			if ($scope.arr.length > 0){
+				result = $scope.arr;
+			}
 		}
-		else
-		{
+		
+		if (angular.isUndefined(result)){
+			alert('Seleccione una materia');
+		}else{
 			result = JSON.parse(result);
 			idC = result["IdC"];
 			$rootScope.materia = result["Materia"];
