@@ -8,6 +8,11 @@ angular.module('app')
 	$scope.recovery = function(){
 		location.hash = "#/recovery";
 	};
+	var getDates = function showDate()
+	{
+			$scope.date = new Date();
+	}
+	getDates();
 });
 
 app.factory('factorylogin', function(){

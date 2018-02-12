@@ -132,5 +132,10 @@ angular.module('app').controller('listadoController', ['$scope','$http','$routeP
 			.success(successBackend)
 			.error(errorBackend); 
 	}
+	var getDates = function showDate()
+	{
+			$scope.date = new Date();
+	}
+	getDates();
 	$scope.getListadoA(); 
 }]);
